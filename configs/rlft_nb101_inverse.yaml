@@ -1,0 +1,35 @@
+# Bonus: Bidirectional (Fig 4) — NB101 inverse (negated reward)
+general:
+  name: "rlft_nb101_inverse"
+  seed: 42
+  train_method: "gdpo"
+  resume: null  # set via CLI --resume
+  inverse: true
+
+dataset:
+  name: "nasbench101"
+  data_dir: "data/NASBench101/raw"
+  reward_dataset: "nasbench101"
+
+model:
+  n_layers: 8
+  diffusion_steps: 800
+  noise_schedule: "cosine"
+  hidden_dims: {dx: 256, de: 64, dy: 64, n_head: 8, dim_ffX: 256, dim_ffE: 128, dim_ffy: 128}
+  hidden_mlp_dims: {X: 256, E: 128, y: 128}
+  lambda_train: [5.0, 0.0]
+
+rlft:
+  epochs: 60
+  batch_size: 15
+  lr: 7.0e-7
+  weight_decay: 1.0e-12
+  sampleloop: 1
+  innerloop: 4
+  ppo_sr: 0.3
+  step_freq: 2
+  fix_frac: 0.75
+  grad_clip: 1.0
+  dist_sample_enabled: true
+  dist_sample_every_k: 10
+  dist_sample_n_target: 300

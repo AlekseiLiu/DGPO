@@ -1,0 +1,8 @@
+{
+  "experiment": "baseline_dgpo_nb101",
+  "metrics": {
+    "default_max_val_acc": {"expected": 94.50, "tolerance": 0.5, "unit": "percent"},
+    "valid_rate": {"expected": 0.90, "tolerance": 0.15}
+  },
+  "notes": "NB101 single task. Mean over 3 seeds."
+}

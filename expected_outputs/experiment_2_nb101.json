@@ -1,0 +1,10 @@
+{
+  "experiment": "filtered_dgpo_nb101",
+  "metrics": {
+    "filtered_max_val_acc": {"expected": 94.18, "tolerance": 0.5, "unit": "percent"},
+    "filtered_threshold_crossing_rate": {"expected": 0.99, "tolerance": 0.10},
+    "filtered_ood_discovery_rate": {"expected": 0.30, "tolerance": 0.20},
+    "filtered_extrapolation_pp": {"expected": 0.0727, "tolerance": 0.04}
+  },
+  "notes": "NB101 filtered pretrain (threshold=0.87). Mean over 3 seeds."
+}

@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dgpo-companion"
+version = "0.1.0"
+description = "DGPO: RL-Steered Graph Diffusion for Neural Architecture Generation — companion implementation"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [
+    {name = "Liuliakov, Hermes, Hammer", email = "aliuliakov@techfak.uni-bielefeld.de"},
+]
+
+dependencies = [
+    "torch>=2.0,<3.0",
+    "numpy>=1.24,<2.0",
+    "pyyaml>=6.0,<7.0",
+    "tensorflow-cpu>=2.10,<2.17",
+    "protobuf>=3.19,<5.0",
+    "absl-py>=1.0,<3.0",
+]
+
+[project.urls]
+Repository = "https://github.com/AlekseiLiu/DGPO"
+Paper = "https://arxiv.org/abs/2602.19261"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*", "vendored*"]

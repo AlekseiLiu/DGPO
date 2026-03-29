@@ -1,0 +1,10 @@
+{
+  "experiment": "baseline_dgpo_nb201",
+  "metrics": {
+    "cifar10_max_val_acc": {"expected": 91.61, "tolerance": 0.5, "unit": "percent"},
+    "cifar100_max_val_acc": {"expected": 73.49, "tolerance": 0.5, "unit": "percent"},
+    "imagenet16_max_val_acc": {"expected": 46.77, "tolerance": 0.5, "unit": "percent"},
+    "valid_rate": {"expected": 0.95, "tolerance": 0.10}
+  },
+  "notes": "NB201 all 3 tasks. Mean over 3 seeds."
+}

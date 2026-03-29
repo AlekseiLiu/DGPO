@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+*.egg
+dist/
+build/
+
+# Data (downloaded at runtime)
+data/NASBench101/raw/nasbench_only108.tfrecord
+data/NASBench201/raw/NAS-Bench-201-*.pth
+data/NASBench201/raw/nb201_unified.pt
+data/*/processed/
+
+# Training outputs
+outputs/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+*.swp
+
+# Environment
+.env
+.venv/

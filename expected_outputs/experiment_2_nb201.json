@@ -1,0 +1,10 @@
+{
+  "experiment": "filtered_dgpo_nb201",
+  "metrics": {
+    "filtered_max_val_acc": {"expected": 91.61, "tolerance": 0.5, "unit": "percent"},
+    "filtered_threshold_crossing_rate": {"expected": 0.90, "tolerance": 0.15},
+    "filtered_ood_discovery_rate": {"expected": 0.30, "tolerance": 0.20},
+    "filtered_extrapolation_pp": {"expected": 0.065, "tolerance": 0.04}
+  },
+  "notes": "NB201 CIFAR-10 filtered pretrain (threshold=0.85). Mean over 3 seeds."
+}
