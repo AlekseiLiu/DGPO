@@ -217,7 +217,7 @@ This implementation builds upon:
 ```bibtex
 @inproceedings{liuliakov2026dgpo,
   title={DGPO: RL-Steered Graph Diffusion for Neural Architecture Generation},
-  author={Liuliakov, Aleksandr and Hermes, Luca and Hammer, Barbara},
+  author={Liuliakov, Aleksei and Hermes, Luca and Hammer, Barbara},
   booktitle={International Joint Conference on Neural Networks (IJCNN)},
   year={2026}
 }
