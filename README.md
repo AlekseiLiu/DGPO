@@ -3,7 +3,7 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2602.19261-b31b1b.svg)](https://arxiv.org/abs/2602.19261)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
-[![IJCNN 2026](https://img.shields.io/badge/IJCNN-2026-green.svg)](https://2026.ijcnn.org/)
+[![IJCNN 2026](https://img.shields.io/badge/IJCNN-2026-green.svg)](https://attend.ieee.org/wcci-2026/)
 
 Companion code for the paper accepted at **IJCNN 2026** (Maastricht):
 
