@@ -1,6 +1,10 @@
 """Pytest setup: make the repo under test importable and register markers."""
+import os
 import sys
 from pathlib import Path
+
+# Must be set before protobuf is first imported (vendored NB101 API); see src/dataset.py.
+os.environ.setdefault("PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION", "python")
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 

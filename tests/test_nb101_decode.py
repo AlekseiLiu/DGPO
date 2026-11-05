@@ -95,6 +95,17 @@ def test_seven_node_cell_unchanged(idx, edges):
     assert dops == ops
 
 
+def test_decode_does_not_mutate_inputs():
+    idx, edges = SMALL_CELLS[5]
+    padded, pidx = pad_like_loader(make_matrix(5, edges), idx)
+    nodes = torch.tensor(pidx)
+    adj = torch.tensor(padded + padded.T)
+    nodes_before, adj_before = nodes.clone(), adj.clone()
+    _nb101_to_adj_ops(nodes, adj)
+    assert torch.equal(nodes, nodes_before)
+    assert torch.equal(adj, adj_before)
+
+
 def test_trailing_output_with_edges_not_trimmed():
     # Slot 5 is an edgeless `output` label, but slot 6 has an incoming edge.
     idx = [INP, C1, C3, MP, C1, OUT, OUT]
@@ -134,8 +145,9 @@ def test_unused_middle_slot_still_pruned():
 @pytest.mark.slow
 def test_padded_cells_are_in_nb101():
     path = os.environ.get("NB101_TFRECORD")
-    if not path or not os.path.exists(path):
+    if not path:
         pytest.skip("NB101_TFRECORD not set")
+    assert os.path.isfile(path), f"NB101_TFRECORD is not a file: {path}"
     from vendored.nasbench.api import NASBench
 
     api = NASBench(path)
