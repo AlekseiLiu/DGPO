@@ -1,7 +1,7 @@
 """Op primitives and constraints for NB101 and NB201."""
 from __future__ import annotations
 
-from typing import List, Sequence
+from typing import List, Sequence, Tuple
 
 import numpy as np
 
@@ -79,3 +79,30 @@ def ensure_io_ops(ops: List[str]) -> List[str]:
     if len(ops) >= 2:
         ops[-1] = "output"
     return ops
+
+
+def unpad_nb101(
+    node_types: Sequence[int], adj_upper: np.ndarray
+) -> Tuple[List[int], np.ndarray]:
+    """Strip trailing NB101 padding slots (label 'output', no incoming edges).
+
+    NB101 cells with fewer than 7 nodes are stored with their real output at
+    slot n-1, followed by edgeless 'output' slots up to slot 6. Trailing slots
+    are removed only if the slot that remains last is labelled 'output' and has
+    incoming edges; otherwise the input is returned unchanged.
+
+    Args:
+        node_types: integer node type indices.
+        adj_upper: upper-triangular adjacency matrix (k=1). Not modified.
+
+    Returns:
+        (node_types, adj_upper), trimmed when padding was found.
+    """
+    out = NB101_NAME_TO_IDX["output"]
+    n = len(node_types)
+    k = n
+    while k > 2 and node_types[k - 1] == out and not adj_upper[:k - 1, k - 1].any():
+        k -= 1
+    if k < n and node_types[k - 1] == out and adj_upper[:k - 1, k - 1].any():
+        return list(node_types[:k]), adj_upper[:k, :k]
+    return list(node_types), adj_upper

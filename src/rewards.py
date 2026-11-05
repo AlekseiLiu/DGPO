@@ -26,6 +26,7 @@ from src.ops import (
     NB101_OP_PRIMITIVES,
     NB201_OP_PRIMITIVES,
     NB201_NUM_VERTICES,
+    unpad_nb101,
 )
 
 
@@ -55,6 +56,9 @@ def _nb101_to_adj_ops(
         indices = node_types.cpu().tolist()
     else:
         indices = list(node_types)
+
+    # Cells with < 7 nodes are stored with trailing edgeless 'output' padding.
+    indices, adj_upper = unpad_nb101(indices, adj_upper)
 
     ops = []
     for idx in indices:
